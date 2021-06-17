@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Contacto } from "./componentes/Contacto";
+import { Registro } from "./componentes/Registro";
 
 function App() {
+  const [formulario, setFormulario] = useState("registro");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className="row">
+        <button
+          className="btn btn-info col-3"
+          onClick={() => setFormulario("registro")}
         >
-          Learn React
-        </a>
-      </header>
+          Registro
+        </button>
+        <button
+          className="btn btn-info col-3"
+          onClick={() => setFormulario("contacto")}
+        >
+          Contacto
+        </button>
+        <h1 className="col-12">Formularios</h1>
+        {formulario === "registro" ? <Registro /> : <Contacto />}
+      </div>
     </div>
   );
 }
